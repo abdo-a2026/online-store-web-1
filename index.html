@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الأناقة - Elegant Store</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Logo Section -->
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h2 class="logo-text">متجر الأناقة</h2>
+            <p class="logo-tagline">حيث يلتقي الأناقة بالجودة</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h3 class="filter-title"><i class="fas fa-sliders-h"></i> الفلاتر</h3>
+            
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-dollar-sign"></i> أقصى سعر
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" id="filterPrice" placeholder="مثال: 100" class="filter-input">
+                    <button id="applyPriceFilter" class="apply-btn">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sort Filter -->
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-sort-amount-down"></i> ترتيب حسب السعر
+                </label>
+                <select id="sortSelect" class="filter-select">
+                    <option value="none">— الكل —</option>
+                    <option value="low">من الأرخص للأغلى</option>
+                    <option value="high">من الأغلى للأرخص</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <nav class="categories-nav">
+            <h3 class="categories-title">التصنيفات</h3>
+            <ul class="categories-list">
+                <li class="category-item active" data-target="home">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </li>
+                <li class="category-item" data-target="man">
+                    <i class="fas fa-male"></i>
+                    <span>رجال</span>
+                </li>
+                <li class="category-item" data-target="women">
+                    <i class="fas fa-female"></i>
+                    <span>نساء</span>
+                </li>
+                <li class="category-item" data-target="child">
+                    <i class="fas fa-child"></i>
+                    <span>أطفال</span>
+                </li>
+                <li class="category-item" data-target="accessories">
+                    <i class="fas fa-watch"></i>
+                    <span>إكسسوارات</span>
+                </li>
+                <li class="category-item" data-target="save">
+                    <i class="fas fa-heart"></i>
+                    <span>المفضلة</span>
+                </li>
+            </ul>
+        </nav>
+
+    </aside>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Menu toggle button for mobile -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>مجموعة 2024 الجديدة</span>
+                </div>
+                <h1 class="hero-title">اكتشف عالم الموضة</h1>
+                <p class="hero-subtitle">تسوق أحدث التصاميم العصرية بأسعار لا تقاوم</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <span>تسوق الآن</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="#offers" class="btn btn-secondary">
+                        <span>العروض الخاصة</span>
+                        <i class="fas fa-tag"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
+            </div>
+        </section>
+
+        <!-- Products Sections -->
+        <div class="products-wrapper" id="productsWrapper">
+            
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                
+                <!-- New Arrivals -->
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">
+                                <i class="fas fa-sparkles"></i> وصل حديثاً
+                            </h2>
+                            <p class="section-subtitle">أحدث المنتجات في متجرنا</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderNew">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderNew">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderNew"></div>
+                </section>
+
+                <!-- Featured Products -->
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">
+                                <i class="fas fa-crown"></i> منتجات مميزة
+                            </h2>
+                            <p class="section-subtitle">مختارة بعناية خاصة لك</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderFeatures">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderFeatures">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderFeatures"></div>
+                </section>
+
+                <!-- Special Offers -->
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">
+                                <i class="fas fa-fire"></i> عروض حصرية
+                            </h2>
+                            <p class="section-subtitle">خصومات مذهلة لفترة محدودة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderOffers">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderOffers">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderOffers"></div>
+                </section>
+
+            </div>
+
+            <!-- Men Page -->
+            <div id="man" class="page">
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-tshirt"></i> أزياء رجالية</h2>
+                            <p class="section-subtitle">إطلالات عصرية للرجل الأنيق</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderSetsMan">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderSetsMan">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderSetsMan"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-shoe-prints"></i> أحذية رجالية</h2>
+                            <p class="section-subtitle">راحة وأناقة في كل خطوة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderShoesMan">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderShoesMan">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderShoesMan"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-glasses"></i> إكسسوارات رجالية</h2>
+                            <p class="section-subtitle">لمسات نهائية مثالية</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesMan">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesMan">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesMan"></div>
+                </section>
+            </div>
+
+            <!-- Women Page -->
+            <div id="women" class="page">
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-shirt"></i> أزياء نسائية</h2>
+                            <p class="section-subtitle">أناقة تخطف الأنظار</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderSetsWomen">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderSetsWomen">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderSetsWomen"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-high-heel"></i> أحذية نسائية</h2>
+                            <p class="section-subtitle">خطواتك أكثر ثقة وجمالاً</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderShoesWomen">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderShoesWomen">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderShoesWomen"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-gem"></i> إكسسوارات نسائية</h2>
+                            <p class="section-subtitle">تفاصيل تكمل جمالك</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesWomen">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesWomen">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesWomen"></div>
+                </section>
+            </div>
+
+            <!-- Child Page -->
+            <div id="child" class="page">
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-baby"></i> ملابس أطفال</h2>
+                            <p class="section-subtitle">راحة وأمان لأطفالك</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderSetsChild">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderSetsChild">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderSetsChild"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-shoe-prints"></i> أحذية أطفال</h2>
+                            <p class="section-subtitle">خطوات آمنة ومريحة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderShoesChild">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderShoesChild">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderShoesChild"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-toys"></i> إكسسوارات أطفال</h2>
+                            <p class="section-subtitle">إضافات جميلة ومرحة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesChild">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesChild">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesChild"></div>
+                </section>
+            </div>
+
+            <!-- Accessories Page -->
+            <div id="accessories" class="page">
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-ring"></i> إكسسوارات موضة</h2>
+                            <p class="section-subtitle">تألق بأحدث صيحات الموضة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesFashion">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesFashion">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesFashion"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-clock"></i> ساعات فاخرة</h2>
+                            <p class="section-subtitle">الوقت بأناقة وفخامة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesHours">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesHours">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesHours"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-glasses"></i> نظارات أنيقة</h2>
+                            <p class="section-subtitle">حماية وأناقة لعينيك</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesGlass">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesGlass">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesGlass"></div>
+                </section>
+
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-bag-shopping"></i> إكسسوارات أخرى</h2>
+                            <p class="section-subtitle">تشكيلة متنوعة ومميزة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderAccessoriesOther">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderAccessoriesOther">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderAccessoriesOther"></div>
+                </section>
+            </div>
+
+            <!-- Saved Page -->
+            <div id="save" class="page">
+                <section class="product-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title"><i class="fas fa-heart"></i> منتجاتي المفضلة</h2>
+                            <p class="section-subtitle">المنتجات التي أضفتها إلى المفضلة</p>
+                        </div>
+                        <div class="scroll-controls">
+                            <button class="scroll-btn" data-target="sliderSaves">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="scroll-btn" data-target="sliderSaves">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slider-track" id="sliderSaves"></div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-gem"></i>
+                        <span>متجر الأناقة</span>
+                    </div>
+                    <p class="footer-desc">
+                        وجهتك الأولى للحصول على أفضل المنتجات العصرية بأسعار منافسة. نوفر لك تجربة تسوق فريدة ومميزة.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> عن المتجر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>خدمة العملاء</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تتبع الطلب</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الإرجاع</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الدفع والتوصيل</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>معلومات التواصل</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+9647700000000"><i class="fas fa-phone"></i> +964 770 000 0000</a></li>
+                        <li><a href="mailto:info@elegantstore.com"><i class="fas fa-envelope"></i> info@elegantstore.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> العراق - بغداد</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 متجر الأناقة. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-overlay" onclick="closeProductModal()"></div>
+        <div class="modal-container">
+            <button class="close-modal" onclick="closeProductModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <div class="modal-left">
+                    <div class="modal-image-slider">
+                        <img id="mainModalImage" src="" alt="Product Image">
+                        <button class="slide-btn prev" onclick="prevImage()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="slide-btn next" onclick="nextImage()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="modal-thumbs" id="modalThumbs"></div>
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title" id="modalName"></h2>
+                    <p class="modal-short-desc" id="modalShortDesc"></p>
+                    <p class="modal-long-desc" id="modalLongDesc"></p>
+                    
+                    <div class="modal-info-section">
+                        <h4><i class="fas fa-ruler"></i> المقاسات المتوفرة</h4>
+                        <div class="modal-chips" id="modalSizes"></div>
+                    </div>
+
+                    <div class="modal-info-section">
+                        <h4><i class="fas fa-palette"></i> الألوان المتوفرة</h4>
+                        <div class="modal-chips" id="modalColors"></div>
+                    </div>
+
+                    <div class="modal-price-section">
+                        <div class="modal-price" id="modalPrice"></div>
+                        <div class="modal-actions">
+                            <button class="modal-save-btn" id="modalSaveBtn">
+                                <i class="fas fa-heart"></i>
+                                <span>حفظ</span>
+                            </button>
+                            <a href="#" class="modal-buy-btn" id="modalWhatsappBtn" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>اطلب الآن</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Products Data -->
+    <script src="data/products.js"></script>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
